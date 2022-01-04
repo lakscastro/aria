@@ -1,14 +1,8 @@
 import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/dp.dart';
-import 'package:aria/theme/time.dart';
+import 'package:aria/widgets/animated_acceleration.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-
-enum Behavior {
-  idle,
-  accelerate,
-  decelerate,
-}
 
 class ParticleAcceleration extends StatefulWidget {
   const ParticleAcceleration({Key? key}) : super(key: key);
@@ -17,71 +11,11 @@ class ParticleAcceleration extends StatefulWidget {
   State<ParticleAcceleration> createState() => _ParticleAccelerationState();
 }
 
-class _ParticleAccelerationState extends State<ParticleAcceleration>
-    with SingleTickerProviderStateMixin {
-  AnimationController? _controller;
-
-  /// How slow the ball must be, should be greater than 0
-  static const _kSlowDownFactor = 1000;
-
-  /// Hold the acceleration and constants required by the basic math
-  static const _kAcceleration = 1.0;
-  static const _kMaxVelocity = 10.0;
-
+class _ParticleAccelerationState extends State<ParticleAcceleration> {
   /// Display that holds the particle
   static const _kParticleCanvasHeight = 50.0;
 
-  /// Calc variables & state
-  var _velocity = 0.0;
-  var _position = 0.0;
-  var _behavior = Behavior.idle;
-
-  /// Returns 0 if stopped or 1 if running fast
-  double get _velocityLevel {
-    return _velocity.clamp(-_kMaxVelocity, _kMaxVelocity).abs() / _kMaxVelocity;
-  }
-
-  void _looper() {
-    if (_behavior == Behavior.accelerate) {
-      _velocity += _kAcceleration;
-    } else if (_behavior == Behavior.decelerate) {
-      _velocity -= _kAcceleration;
-    } else if (_behavior == Behavior.idle) {
-      if (_velocity > 0) {
-        _velocity -= _kAcceleration / 2;
-      } else if (_velocity < 0) {
-        _velocity += _kAcceleration / 2;
-      }
-    }
-
-    _position += _velocity / _kSlowDownFactor;
-    _position = (_position % 1).abs();
-  }
-
-  void _detachBehavior(Behavior target) {
-    if (_behavior == target) {
-      _behavior = Behavior.idle;
-    }
-  }
-
-  Widget _buildTapArea(String text, Behavior behavior) {
-    return Expanded(
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: (_) => _behavior = behavior,
-        onTapUp: (_) => _detachBehavior(behavior),
-        onTapCancel: () => _detachBehavior(behavior),
-        child: Padding(
-          padding: k4dp.padding(),
-          child: Center(
-            child: Text(text, style: const TextStyle(letterSpacing: k3dp)),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildParticleCanvas() {
+  Widget _buildParticleCanvas(AnimatedAccelerationState state) {
     return DottedBorder(
       color: kBorderColor,
       strokeWidth: k1dp,
@@ -90,15 +24,10 @@ class _ParticleAccelerationState extends State<ParticleAcceleration>
         color: kSurfaceColor,
         child: Padding(
           padding: k4dp.padding(),
-          child: AnimatedBuilder(
-            animation: _controller!.view,
-            builder: (context, child) {
-              return CustomPaint(
-                painter: ParticlePainter(_position, _velocityLevel),
-                willChange: true,
-                size: const Size.fromHeight(_kParticleCanvasHeight),
-              );
-            },
+          child: CustomPaint(
+            painter: ParticlePainter(state.position, state.velocity),
+            willChange: true,
+            size: const Size.fromHeight(_kParticleCanvasHeight),
           ),
         ),
       ),
@@ -106,37 +35,9 @@ class _ParticleAccelerationState extends State<ParticleAcceleration>
   }
 
   @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(vsync: this, duration: k5000ms);
-
-    _controller!.addListener(_looper);
-
-    _controller!.repeat();
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildTapArea('DECELERATE', Behavior.decelerate),
-            _buildParticleCanvas(),
-            _buildTapArea('ACCELERATE', Behavior.accelerate),
-          ],
-        ),
-      ),
+    return AnimatedAcceleration(
+      builder: (context, state) => _buildParticleCanvas(state),
     );
   }
 }

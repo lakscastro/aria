@@ -39,7 +39,7 @@ class Splash extends StatelessWidget {
       child: InkWell(
         onHover: onHover,
         onFocusChange: onFocusChange,
-        // onTap: enableSplash ? onTap ?? () {} : null,
+        onTap: enableSplash ? onTap ?? () {} : null,
         highlightColor: kHighlightColor,
         splashColor: kSplashColor,
         child: child,

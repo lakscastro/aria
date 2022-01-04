@@ -9,3 +9,4 @@ const kBorderColor = Color(0xFF373E47);
 const kSurfaceColor = Color(0xFF22272E);
 const kBackgroundColor = Color(0xFF1C2128);
 const kHighContrast = Colors.white;
+const kGreenColor = Color(0xFF1BB596);

@@ -1,4 +1,5 @@
-import 'package:aria/animations/particle_acceleration.dart';
+import 'package:aria/animations/circular_particle_acceleration.dart';
+import 'package:aria/theme/typo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,7 +23,7 @@ class Root extends StatelessWidget {
       theme: theme.copyWith(
         textTheme: theme.textTheme.apply(
           fontFamily: 'Outfit',
-          bodyColor: const Color(0xFF768390),
+          bodyColor: kBodyColor,
         ),
       ),
       home: const HomePage(),
@@ -40,6 +41,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const ParticleAcceleration();
+    return const CircularParticleAcceleration();
   }
 }
