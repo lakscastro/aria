@@ -1,4 +1,5 @@
-import 'package:aria/animations/circular_particle_acceleration.dart';
+import 'package:aria/pages/home_page.dart';
+import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/typo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,26 +22,16 @@ class Root extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
+        scaffoldBackgroundColor: kBackgroundColor,
+        cardColor: kSurfaceColor,
+        highlightColor: kHighlightColor,
+        splashColor: kSplashColor,
         textTheme: theme.textTheme.apply(
-          fontFamily: 'Outfit',
+          fontFamily: kFontFamily,
           bodyColor: kBodyColor,
         ),
       ),
       home: const HomePage(),
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const CircularParticleAcceleration();
   }
 }

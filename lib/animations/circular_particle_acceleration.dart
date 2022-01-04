@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/dp.dart';
+import 'package:aria/utils/math.dart';
 import 'package:aria/widgets/animated_acceleration.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -65,11 +66,7 @@ class ParticlePainter extends CustomPainter {
   double get _radius => _size.shortestSide / 2;
 
   Offset _circleWith(double radius, double position) =>
-      _circlePoint(radius, pi * 2 * (1 - position)) + _center;
-
-  Offset _circlePoint(double radius, double radians) {
-    return Offset(radius * cos(radians), -radius * sin(radians));
-  }
+      circlePoint(radius, pi * 2 * (1 - position)) + _center;
 
   Offset _drawParticle(double radius, double position) {
     final circle = _circleWith(radius, position);

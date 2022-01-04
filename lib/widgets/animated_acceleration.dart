@@ -56,7 +56,7 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
 
   /// Calc variables & state
   var _velocity = 0.0;
-  var _position = 0.0;
+  var _position = 0.5;
   var _behavior = Behavior.idle;
 
   /// Returns 0 if stopped or 1 if running fast
