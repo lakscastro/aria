@@ -30,7 +30,8 @@ class _CircularParticleAccelerationState
             alignment: Alignment.center,
             children: [
               CustomPaint(
-                painter: ParticlePainter(state.position, state.velocity),
+                painter: _CircularParticleAccelerationPainter(
+                    state.position, state.velocity),
                 willChange: true,
                 size: Size.infinite,
               ),
@@ -49,8 +50,11 @@ class _CircularParticleAccelerationState
   }
 }
 
-class ParticlePainter extends CustomPainter {
-  ParticlePainter(this.position, this.velocity);
+class _CircularParticleAccelerationPainter extends CustomPainter {
+  _CircularParticleAccelerationPainter(this.position, this.velocity);
+
+  static const _kRadius = 10.0;
+  static const _kStrokeWidth = 2.0;
 
   final double position;
   final double velocity;
@@ -58,15 +62,38 @@ class ParticlePainter extends CustomPainter {
   late Canvas _canvas;
   late Size _size;
 
+  @override
+  void paint(Canvas canvas, Size size) {
+    _canvas = canvas;
+    _size = size;
+
+    _drawBackground();
+
+    /// [1 -] is used to reverse the current animation
+    /// [position * 2] is used to skip an entire cycle of the animation
+    /// [% 1] is used to normalize the advanced pointer created in the previous step
+    final reversedFuturePosition = 1 - (position * 2) % 1;
+
+    final circles = [
+      _drawParticle(_radius, position),
+      _drawParticle(_radius / 2, reversedFuturePosition),
+      _drawParticle(0.0, position),
+    ];
+
+    for (var i = 0; i < circles.length - 1; i++) {
+      connect(circles[i], circles[i + 1]);
+    }
+  }
+
   Offset get _center => Offset(_size.width / 2, _size.height / 2);
-
-  static const _kRadius = 10.0;
-  static const _kStrokeWidth = 2.0;
-
   double get _radius => _size.shortestSide / 2;
 
+  @override
+  bool shouldRepaint(_CircularParticleAccelerationPainter oldDelegate) =>
+      position != oldDelegate.position || velocity != oldDelegate.velocity;
+
   Offset _circleWith(double radius, double position) =>
-      circlePoint(radius, pi * 2 * (1 - position)) + _center;
+      circlePoint(radius, k2pi * (1 - position)) + _center;
 
   Offset _drawParticle(double radius, double position) {
     final circle = _circleWith(radius, position);
@@ -115,31 +142,4 @@ class ParticlePainter extends CustomPainter {
     _canvas.drawCircle(from, 5, Paint()..color = color);
     _canvas.drawCircle(to, 5, Paint()..color = color);
   }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    _canvas = canvas;
-    _size = size;
-
-    _drawBackground();
-
-    /// [1 -] is used to reverse the current animation
-    /// [position * 2] is used to skip an entire cycle of the animation
-    /// [% 1] is used to normalize the advanced pointer created in the previous step
-    final reversedFuturePosition = 1 - (position * 2) % 1;
-
-    final circles = [
-      _drawParticle(_radius, position),
-      _drawParticle(_radius / 2, reversedFuturePosition),
-      _drawParticle(0.0, position),
-    ];
-
-    for (var i = 0; i < circles.length - 1; i++) {
-      connect(circles[i], circles[i + 1]);
-    }
-  }
-
-  @override
-  bool shouldRepaint(ParticlePainter oldDelegate) =>
-      position != oldDelegate.position || velocity != oldDelegate.velocity;
 }

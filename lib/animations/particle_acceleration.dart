@@ -25,7 +25,7 @@ class _ParticleAccelerationState extends State<ParticleAcceleration> {
         child: Padding(
           padding: k4dp.padding(),
           child: CustomPaint(
-            painter: ParticlePainter(state.position, state.velocity),
+            painter: _ParticleAcceleration(state.position, state.velocity),
             willChange: true,
             size: const Size.fromHeight(_kParticleCanvasHeight),
           ),
@@ -42,8 +42,12 @@ class _ParticleAccelerationState extends State<ParticleAcceleration> {
   }
 }
 
-class ParticlePainter extends CustomPainter {
-  ParticlePainter(this.position, this.velocity);
+class _ParticleAcceleration extends CustomPainter {
+  _ParticleAcceleration(this.position, this.velocity);
+
+  static const _kRadius = 10.0;
+  static const _kStrokeWidth = 2.0;
+  static const _kWrapper = _kRadius * 2 + _kStrokeWidth * 2;
 
   final double position;
   final double velocity;
@@ -51,15 +55,23 @@ class ParticlePainter extends CustomPainter {
   late Canvas _canvas;
   late Size _size;
 
+  @override
+  void paint(Canvas canvas, Size size) {
+    _canvas = canvas;
+    _size = size;
+
+    _drawParticle();
+  }
+
   Offset get _center => Offset(_size.width / 2, _size.height / 2);
 
   Offset get _circle =>
       Offset((_size.width + _kWrapper * 2) * position, _center.dy)
           .translate(-_kWrapper, 0);
 
-  static const _kRadius = 10.0;
-  static const _kStrokeWidth = 2.0;
-  static const _kWrapper = _kRadius * 2 + _kStrokeWidth * 2;
+  @override
+  bool shouldRepaint(_ParticleAcceleration oldDelegate) =>
+      position != oldDelegate.position || velocity != oldDelegate.velocity;
 
   void _drawParticle() {
     final shadow = Path()
@@ -78,16 +90,4 @@ class ParticlePainter extends CustomPainter {
     );
     _canvas.drawCircle(_circle, _kRadius, Paint()..color = kSurfaceColor);
   }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    _canvas = canvas;
-    _size = size;
-
-    _drawParticle();
-  }
-
-  @override
-  bool shouldRepaint(ParticlePainter oldDelegate) =>
-      position != oldDelegate.position || velocity != oldDelegate.velocity;
 }
