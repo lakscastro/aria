@@ -66,7 +66,7 @@ Same as the first one, created just to setup the project and to release criativi
   Open Source
 </h2>
 <p align="center">
-  <sub>Copyright © 2021-present, Laks Castro.</sub>
+  <sub>Copyright © 2022-present, Laks Castro.</sub>
 </p>
 <p align="center">aria <a href="/LICENSE">is MIT licensed 💖</a></p>
 <p align="center">
