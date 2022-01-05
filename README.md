@@ -55,3 +55,22 @@ Same as the first one, created just to setup the project and to release criativi
 - Without physics
 
 <kbd><img src="https://user-images.githubusercontent.com/51419598/148213862-be05ab37-b1ae-4f34-a05d-7530707a95e9.gif"></kbd>
+
+<br />
+<br />
+<br />
+
+<samp>
+
+<h2 align="center">
+  Open Source
+</h2>
+<p align="center">
+  <sub>Copyright © 2021-present, Laks Castro.</sub>
+</p>
+<p align="center">aria <a href="/LICENSE">is MIT licensed 💖</a></p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/51419598/148217822-c2a53850-27ab-4e5e-8acb-81fdcb3d9d64.png" width="35" />
+</p>
+
+</samp>
