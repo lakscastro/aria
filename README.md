@@ -17,5 +17,13 @@
 <a href="https://github.com/lakscastro/aria/releases"><h4 align="center"><samp>Donwload It</samp></h4></a>
 
 <br>
-  
+
+## Logo Credits
+ 
+Awesome 3D Artwork by [@killnicole](https://www.figma.com/@killnicole) available at [Figma Community](https://www.figma.com/community/file/917777039353073016)
+
+## What is?
+
+Sometimes I get stuck on social media feeds due the beautiful designs and geometry related stuff that shows up in my feed. And I always wanted to implement these kind of works/designs as animations, but I didn't. So this project is to do it: create any kind of interesting animations, be from the internet or even from my mind. Also, the name is ref to the [aria math](https://c418.bandcamp.com/track/aria-math) by C418!
+
 </samp>
