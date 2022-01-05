@@ -26,7 +26,7 @@ Awesome 3D Artwork by [@killnicole](https://www.figma.com/@killnicole) available
 
 ## What is?
 
-Sometimes I get stuck on social media feeds due the beautiful designs and geometry related stuff that shows up in my feed. And I always wanted to implement these kind of works/designs as animations, but I didn't. So this project is to do it: create any kind of interesting animations, whether from the internet or even from my mind. Also, the name is ref to the [aria math](https://c418.bandcamp.com/track/aria-math) by C418!
+Sometimes I get stuck on social media due the beautiful designs and geometry related stuff that shows up in my feed. And I always wanted to implement these kind of works/designs as animations, but I didn't. So this project is to do it: create any kind of interesting animations, whether from the internet or even from my mind. Also, the name is ref to the [aria math](https://c418.bandcamp.com/track/aria-math) by C418!
 
 ## Current animations
   
