@@ -18,6 +18,8 @@
 
 <br>
 
+</samp>
+
 ## Logo Credits
  
 Awesome 3D Artwork by [@killnicole](https://www.figma.com/@killnicole) available at [Figma Community](https://www.figma.com/community/file/917777039353073016)
@@ -26,4 +28,30 @@ Awesome 3D Artwork by [@killnicole](https://www.figma.com/@killnicole) available
 
 Sometimes I get stuck on social media feeds due the beautiful designs and geometry related stuff that shows up in my feed. And I always wanted to implement these kind of works/designs as animations, but I didn't. So this project is to do it: create any kind of interesting animations, whether from the internet or even from my mind. Also, the name is ref to the [aria math](https://c418.bandcamp.com/track/aria-math) by C418!
 
-</samp>
+## Current animations
+  
+As the time I write this document, the project has two animations
+
+All animations runs 60fps in real devices and the browser, the gifs are just for preview purposes
+
+<br />
+
+### 1. Minimal particle acceleration
+
+Created just to setup the project and write some lines of code
+
+- Linear acceleration
+- Without physics
+
+<kbd><img src="https://user-images.githubusercontent.com/51419598/148213858-8255e069-d747-4054-9c87-add112a79a9d.gif"></kbd>
+  
+<br />
+
+### 2. Circular particle acceleration
+
+Same as the first one, created just to setup the project and to release criativity
+
+- Linear acceleration
+- Without physics
+
+<kbd><img src="https://user-images.githubusercontent.com/51419598/148213862-be05ab37-b1ae-4f34-a05d-7530707a95e9.gif"></kbd>
