@@ -21,7 +21,7 @@ class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
   static const _kParticleCanvasHeight = 80.0;
   static const _kPeriodWidth = 150.0;
 
-  double get _periodCount => context.media.size.width / _kPeriodWidth;
+  int get _periodCount => (context.media.size.width / _kPeriodWidth).ceil();
 
   Widget _buildParticleCanvas(AnimatedAccelerationState state) {
     return DottedBorder(
@@ -79,7 +79,7 @@ class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
 class SineFunction {
   const SineFunction({required this.periodCount});
 
-  final double periodCount;
+  final int periodCount;
 
   /// [x] must be within 0 and 1
   double yFromX(double x) {
@@ -101,7 +101,7 @@ class _SineParticlePainter extends CustomPainter {
 
   final double position;
   final double velocity;
-  final double periodCount;
+  final int periodCount;
 
   late Canvas _canvas;
   late Size _size;
@@ -163,7 +163,7 @@ class _SineParticleTrajetoryPainter extends CustomPainter {
   final double velocity;
   final double start;
   final double end;
-  final double periodCount;
+  final int periodCount;
   final double radius;
 
   late Canvas _canvas;
