@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:aria/theme/colors.dart';
+import 'package:aria/theme/context.dart';
 import 'package:aria/theme/dp.dart';
 import 'package:aria/utils/math.dart';
 import 'package:aria/widgets/animated_acceleration.dart';
@@ -18,6 +19,9 @@ class SineParticleAcceleration extends StatefulWidget {
 class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
   /// Display that holds the particle
   static const _kParticleCanvasHeight = 80.0;
+  static const _kPeriodWidth = 150.0;
+
+  double get _periodCount => context.media.size.width / _kPeriodWidth;
 
   Widget _buildParticleCanvas(AnimatedAccelerationState state) {
     return DottedBorder(
@@ -40,7 +44,7 @@ class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
                         state.velocity,
                         0,
                         1,
-                        5,
+                        _periodCount,
                         1,
                       ),
                     ),
@@ -48,8 +52,11 @@ class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
                 ),
                 Positioned.fill(
                   child: CustomPaint(
-                    painter:
-                        _SineParticlePainter(state.position, state.velocity, 5),
+                    painter: _SineParticlePainter(
+                      state.position,
+                      state.velocity,
+                      _periodCount,
+                    ),
                     willChange: true,
                   ),
                 ),
