@@ -56,6 +56,8 @@ Same as the first one, created just to setup the project and to release criativi
 
 <kbd><img src="https://user-images.githubusercontent.com/51419598/148213862-be05ab37-b1ae-4f34-a05d-7530707a95e9.gif"></kbd>
 
+<br />
+
 ### 3. Sine particle acceleration
 
 Sine time, now we have a animation related to the sine function
