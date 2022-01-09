@@ -33,7 +33,7 @@ class _SineParticleAccelerationState extends State<SineParticleAcceleration> {
         child: ColoredBox(
           color: kSurfaceColor,
           child: Padding(
-            padding: k8dp.padding(),
+            padding: k8dp.symmetric(vertical: true),
             child: Stack(
               fit: StackFit.expand,
               children: [

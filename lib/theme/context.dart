@@ -7,4 +7,8 @@ extension BuildContextAlias on BuildContext {
 
   MediaQueryData get media => MediaQuery.of(this);
   Size get screen => media.size;
+  double get width => screen.width;
+  double get height => screen.height;
+  double get shortestSide => screen.shortestSide;
+  double get longestSide => screen.longestSide;
 }
