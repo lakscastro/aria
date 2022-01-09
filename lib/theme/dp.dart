@@ -23,3 +23,8 @@ extension Util on double {
         vertical: vertical ? this : 0,
       );
 }
+
+const k1p1 = 1 / 1;
+const k1p2 = 1 / 2;
+const k3p2 = 3 / 2;
+const k16p9 = 16 / 9;

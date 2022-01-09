@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/dp.dart';
 import 'package:aria/utils/math.dart';
+import 'package:aria/utils/notations.dart';
 import 'package:aria/widgets/animated_acceleration.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,9 @@ class _CircularParticleAccelerationState
             children: [
               CustomPaint(
                 painter: _CircularParticleAccelerationPainter(
-                    state.position, state.velocity),
+                  state.position,
+                  state.velocity,
+                ),
                 willChange: true,
                 size: Size.infinite,
               ),
@@ -56,7 +57,10 @@ class _CircularParticleAccelerationPainter extends CustomPainter {
   static const _kRadius = 10.0;
   static const _kStrokeWidth = 2.0;
 
+  @anchor
   final double position;
+
+  @anchor
   final double velocity;
 
   late Canvas _canvas;

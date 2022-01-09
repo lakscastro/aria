@@ -4,6 +4,7 @@ import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/dp.dart';
 import 'package:aria/theme/time.dart';
 import 'package:aria/utils/animation.dart';
+import 'package:aria/utils/notations.dart';
 import 'package:flutter/material.dart';
 
 enum Behavior {
@@ -50,12 +51,8 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
     with SingleTickerProviderStateMixin {
   AnimationController? _controller;
 
-  /// How slow the ball must be, should be greater than 0
-  static const _kSlowDownFactor = 1000;
-
   /// Hold the acceleration and constants required by the basic math
   static const _kAcceleration = 1.0;
-  static const _kFriction = 0.5;
   static const _kMaxVelocity = 10.0;
 
   /// Calc variables & state
@@ -63,12 +60,11 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
   late var _initialVelocity = _velocity;
   var _behavior = Behavior.idle;
 
-  /// Variables ended with `_` are called `anchor variables`
-  ///
-  /// These kind of variables are always double with max value of [1] and min [0]
-  /// and they are the way that we make the calculation relative to the size
-  var _position_ = 0.5;
-  late var _initialPosition_ = _position_;
+  @anchor
+  var _position = 0.5;
+
+  @anchor
+  late var _initialPosition = _position;
 
   /// Returns 0 if stopped or 1 if running fast
   double get _velocityLevel {
@@ -89,11 +85,11 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
 
     _velocity = _initialVelocity + (acceleration * _elapsed!);
 
-    _position_ = _initialPosition_ +
+    _position = _initialPosition +
         _initialVelocity * _elapsed! +
         (acceleration * pow(_elapsed!, 2)) / 2;
 
-    _position_ = (_position_ % 1).abs();
+    _position = (_position % 1).abs();
   }
 
   void _setBehavior(Behavior target) {
@@ -101,7 +97,7 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
 
     _behavior = target;
     _initialVelocity = _velocity;
-    _initialPosition_ = _position_;
+    _initialPosition = _position;
     _controller?.repeat();
   }
 
@@ -130,7 +126,7 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
           context,
           AnimatedAccelerationState(
             velocity: _velocityLevel,
-            position: _position_,
+            position: _position,
             controller: _controller!,
           ),
         );
@@ -146,7 +142,7 @@ class _AnimatedAccelerationState extends State<AnimatedAcceleration>
 
     _controller!.addListener(_looper);
 
-    _controller!.infinite();
+    _controller!.repeat();
   }
 
   @override

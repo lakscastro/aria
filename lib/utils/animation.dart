@@ -6,19 +6,31 @@ extension DurationUtils on Duration {
       inMicroseconds / Duration.microsecondsPerSecond;
 }
 
-extension AnimationControllerUtils on AnimationController {
-  void infinite() {
-    animateWith(_InfiniteSimulation());
+/// Helper class to implement a simple loop animation
+abstract class SingleInfiniteAnimationMixin<T extends StatefulWidget>
+    extends State<T> with SingleTickerProviderStateMixin<T> {
+  AnimationController? controller;
+  Animation<double>? animation;
+
+  @protected
+  Duration get duration;
+
+  @protected
+  Curve get curve => Curves.linear;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(vsync: this, duration: duration);
+
+    animation = CurvedAnimation(parent: controller!, curve: curve);
   }
-}
-
-class _InfiniteSimulation extends Simulation {
-  @override
-  bool isDone(double timeInSeconds) => false;
 
   @override
-  double dx(double time) => -1;
+  void dispose() {
+    controller?.dispose();
 
-  @override
-  double x(double time) => -1;
+    super.dispose();
+  }
 }

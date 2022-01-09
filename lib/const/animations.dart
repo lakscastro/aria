@@ -1,4 +1,5 @@
 import 'package:aria/animations/circular_particle_acceleration.dart';
+import 'package:aria/animations/outline_circle.dart';
 import 'package:aria/animations/particle_acceleration.dart';
 import 'package:aria/animations/sine_particle_acceleration.dart';
 import 'package:aria/models/animation_card.dart';
@@ -22,5 +23,11 @@ final animations = [
     description:
         'sine based animation with static acceleration, also I noticed that the physics need to be improved',
     complexity: 2,
+  ),
+  AnimationCard(
+    builder: (context) => const OutlineCircle(),
+    title: 'fault',
+    description: 'infinite outline circle animation',
+    complexity: 0,
   ),
 ];

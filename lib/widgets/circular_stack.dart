@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/time.dart';
 import 'package:aria/utils/math.dart';
+import 'package:aria/utils/notations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -119,6 +118,7 @@ class CircularStackPainter extends CustomPainter {
     required this.withLines,
   });
 
+  @anchor
   final double progress;
   final int stackLength;
   final int dotsLength;
@@ -189,10 +189,10 @@ class CircularStackPainter extends CustomPainter {
 
         final distance = distanceBetween(circle, neighbor);
 
-        final distanceOpacity = 1 - distance / (_radius * 2);
+        final distanceOpacity = (1 - distance / (_radius * 2)).clamp(0, 1) / 1;
 
         if (withLines) {
-          connect(circle, neighbor, distanceOpacity.clamp(0, 1));
+          connect(circle, neighbor, distanceOpacity);
         }
       }
 

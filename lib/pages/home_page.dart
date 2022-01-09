@@ -1,5 +1,3 @@
-import 'package:aria/animations/circular_particle_acceleration.dart';
-import 'package:aria/animations/particle_acceleration.dart';
 import 'package:aria/const/animations.dart';
 import 'package:aria/const/links.dart';
 import 'package:aria/models/animation_card.dart';
@@ -7,7 +5,6 @@ import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/context.dart';
 import 'package:aria/theme/dp.dart';
 import 'package:aria/theme/typo.dart';
-import 'package:aria/utils/math.dart';
 import 'package:aria/utils/url_launcher.dart';
 import 'package:aria/widgets/circular_stack.dart';
 import 'package:flutter/material.dart';
