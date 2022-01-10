@@ -1,25 +1,24 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-const kMinAnimationComplexity = 0;
-const kMaxAnimationComplexity = 4;
+const kMinAnimationFun = 0;
+const kMaxAnimationFun = 8;
 
 class AnimationCard extends Equatable {
   const AnimationCard({
     required this.builder,
     required this.title,
     required this.description,
-    required this.complexity,
+    required this.fun,
   }) : assert(
-          complexity >= kMinAnimationComplexity &&
-              complexity <= kMaxAnimationComplexity,
+          fun >= kMinAnimationFun && fun <= kMaxAnimationFun,
         );
 
   final WidgetBuilder builder;
   final String title;
   final String description;
-  final int complexity;
+  final int fun;
 
   @override
-  List<Object?> get props => [title, description, complexity];
+  List<Object?> get props => [title, description, fun];
 }

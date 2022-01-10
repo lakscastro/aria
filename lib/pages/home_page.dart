@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     final color = Color.lerp(
       kGreenColor,
       kRedColor,
-      card.complexity / kMaxAnimationComplexity,
+      card.fun / kMaxAnimationFun,
     );
 
     return InkWell(
@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
           children: [
             CircularStack(
               color: color!,
-              dotsLength: card.complexity + 1,
-              stackLength: card.complexity + 1,
+              dotsLength: card.fun + 1,
+              stackLength: card.fun + 1,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: k5dp),
