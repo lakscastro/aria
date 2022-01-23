@@ -1,5 +1,6 @@
 import 'package:aria/animations/circular_particle_acceleration.dart';
 import 'package:aria/animations/connected_circles.dart';
+import 'package:aria/animations/focus_point.dart';
 import 'package:aria/animations/outline_circle.dart';
 import 'package:aria/animations/particle_acceleration.dart';
 import 'package:aria/animations/sine_particle_acceleration.dart';
@@ -36,5 +37,11 @@ final animations = [
     title: 'left! right!',
     description: 'play with a set of connected circles',
     fun: 3,
+  ),
+  AnimationCard(
+    builder: (context) => const FocusPoint(),
+    title: 'where am I?',
+    description: 'how can you handle coordinate systems?',
+    fun: 6,
   ),
 ]..sort((a, b) => a.fun - b.fun);
