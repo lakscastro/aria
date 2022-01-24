@@ -17,7 +17,7 @@ class OutlineCircle extends StatefulWidget {
   _OutlineCircleState createState() => _OutlineCircleState();
 }
 
-class _OutlineCircleState extends SingleInfiniteAnimationMixin<OutlineCircle> {
+class _OutlineCircleState extends SingleInfiniteAnimation<OutlineCircle> {
   static const _kMinCirclePadding = 75.0;
 
   @override

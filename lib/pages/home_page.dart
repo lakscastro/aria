@@ -18,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const _kMinAnimationCardWidth = 150.0;
+
   Widget _buildAnimationCard(AnimationCard card) {
     final color = Color.lerp(
       kGreenColor,
@@ -103,9 +105,9 @@ class _HomePageState extends State<HomePage> {
               child: MasonryGridView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                gridDelegate:
-                    const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      context.screen.width ~/ _kMinAnimationCardWidth,
                 ),
                 mainAxisSpacing: k8dp,
                 children: [

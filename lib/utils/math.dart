@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 const k2pi = pi * 2;
 
 Offset circlePoint(double radius, double radians) =>
-    Offset(radius * cos(radians), -radius * sin(radians));
+    ellipticalPoint(radius, radius, radians);
+
+Offset ellipticalPoint(double radiusX, double radiusY, double radians) =>
+    Offset(radiusX * cos(radians), -radiusY * sin(radians));
 
 int randomInt([int min = 0, int max = 1000]) {
   final random = Random();

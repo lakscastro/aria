@@ -1,3 +1,4 @@
+import 'package:aria/animations/simple_pendulum.dart';
 import 'package:aria/pages/home_page.dart';
 import 'package:aria/theme/colors.dart';
 import 'package:aria/theme/typo.dart';
@@ -31,7 +32,7 @@ class Root extends StatelessWidget {
           bodyColor: kBodyColor,
         ),
       ),
-      home: const HomePage(),
+      home: const SimplePendulum(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:aria/animations/circular_particle_acceleration.dart';
 import 'package:aria/animations/connected_circles.dart';
 import 'package:aria/animations/outline_circle.dart';
 import 'package:aria/animations/particle_acceleration.dart';
+import 'package:aria/animations/simple_pendulum.dart';
 import 'package:aria/animations/sine_particle_acceleration.dart';
 import 'package:aria/models/animation_card.dart';
 
@@ -36,5 +37,11 @@ final animations = [
     title: 'left! right!',
     description: 'play with a set of connected circles',
     fun: 3,
+  ),
+  AnimationCard(
+    builder: (context) => const SimplePendulum(),
+    title: 'bouncing',
+    description: 'a simple pendulum implementation',
+    fun: 6,
   ),
 ]..sort((a, b) => a.fun - b.fun);
