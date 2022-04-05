@@ -14,11 +14,19 @@
   <img src="https://img.shields.io/badge/dart-22272E?style=for-the-badge&logo=dart&logoColor=00CBB2">
 </p>
 
-<a href="https://github.com/lakscastro/aria/releases"><h4 align="center"><samp>Donwload It</samp></h4></a>
+<a href="https://github.com/lakscastro/aria/releases"><h4 align="center"><samp>Download It</samp></h4></a>
 
 <br>
 
 </samp>
+
+## Support
+
+If you have ideas to share, bugs to report or need support, you can either open an issue or join our Discord server
+
+<a href="https://discord.gg/86GDERXZNS">
+  <kbd><img src="https://discordapp.com/api/guilds/771498135188799500/widget.png?style=banner2" alt="Discord Banner"/></kbd>
+</a>
 
 ## Logo Credits
  
