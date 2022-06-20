@@ -22,17 +22,12 @@
 
 ## Support
 
-If you have ideas to share, bugs to report or need support, you can either open an issue or join our Discord server
-
-<a href="https://discord.gg/86GDERXZNS">
-  <kbd><img src="https://discordapp.com/api/guilds/771498135188799500/widget.png?style=banner2" alt="Discord Banner"/></kbd>
-</a>
-
+If you have ideas to share, bugs to report or need support, you can either open an issue or join our [Discord server](https://discord.gg/86GDERXZNS).
 ## Logo Credits
  
 Awesome 3D Artwork by [@killnicole](https://www.figma.com/@killnicole) available at [Figma Community](https://www.figma.com/community/file/917777039353073016)
 
-## What is?
+## What is it?
 
 Sometimes I get stuck on social media due the beautiful designs and geometry related stuff that shows up in my feed. And I always wanted to implement these kind of works/designs as animations, but I didn't. So this project is to do it: create any kind of interesting animations, whether from the internet or even from my mind. Also, the name is ref to the [aria math](https://c418.bandcamp.com/track/aria-math) by C418!
 
