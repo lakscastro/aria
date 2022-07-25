@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                   style: Theme.of(context).textTheme.overline,
                 ),
                 TextSpan(
-                  text: 'laks',
+                  text: 'Alex Rintt',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                                 .copyWith(color: kBorderColor),
                           ),
                           TextSpan(
-                            text: 'laks ',
+                            text: 'Alex ',
                             style: context.textTheme.overline!
                                 .copyWith(color: kRedColor),
                           ),

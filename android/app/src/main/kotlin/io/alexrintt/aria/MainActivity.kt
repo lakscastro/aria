@@ -1,4 +1,4 @@
-package io.lakscastro.aria
+package io.alexrintt.aria
 
 import io.flutter.embedding.android.FlutterActivity
 
